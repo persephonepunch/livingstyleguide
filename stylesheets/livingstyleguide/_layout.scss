@@ -18,18 +18,18 @@
 }
 
 .lsg--logo {
-  $logo-size: floor($lsg--sub-headline-font-size / 3) * 9;
+  $logo-size: ceil($lsg--base-font-size / 3) * 9;
   @extend %lsg--reset;
   color: transparent;
   display: block;
-  height: $logo-size * 2;
   font-size: 0;
+  height: $logo-size * 2;
   line-height: $logo-size * 2;
-  margin: auto;
+  margin: 0 auto (2 * $lsg--gap-width);
   position: relative;
   text-align: center;
   transition: all 0.1s linear;
-  width: $logo-size * 6;
+  width: $logo-size * 8;
   z-index: 2;
 
   &:hover {
@@ -39,7 +39,8 @@
   &::after {
     color: transparent;
     content: "Made with The LivingStyleGuide Gem";
-    font-size: $lsg--sub-headline-font-size;
+    font-family: $lsg--base-font;
+    font-size: $lsg--base-font-size;
     transform: scale(0.5);
     transition: inherit;
     white-space: nowrap;
@@ -50,6 +51,7 @@
     transform: scale(1);
   }
 
+  // scss-lint:disable SpaceAfterPropertyColon
   &::before {
     $unit: $logo-size / 9;
     $position-a: $unit;
@@ -72,9 +74,9 @@
     left: 50%;
     margin: $logo-size / -2;
     position: absolute;
-    transition: inherit;
-    transform: rotate(45deg);
     top: 50%;
+    transform: rotate(45deg);
+    transition: all 0.1s linear;
     width: $logo-size;
     z-index: -1;
   }
@@ -89,6 +91,6 @@
       $position-a $position-b,
       $position-b $position-a,
       $position-b $position-b;
-    background-size: $logo-size / 2 + 2 * $overlap;
+    background-size: $logo-size / 9 * 5 + 2 * $overlap;
   }
 }

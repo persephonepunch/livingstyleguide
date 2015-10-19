@@ -11,12 +11,21 @@
   margin: 0 $lsg--gap-width $lsg--gap-width 0;
   position: relative;
   text-align: center;
+  transition: transform 0.2s;
   z-index: 1;
+
+  &:active {
+    transform: scale(0.9);
+  }
 
   &:before {
     @extend %lsg--reset;
-    border: $lsg--color-swatch-border-width $lsg--color-swatch-border-color solid;
-    border-radius: $lsg--color-swatch-border-radius;
+    border: {
+      color: $lsg--color-swatch-border-color;
+      radius: $lsg--color-swatch-border-radius;
+      style: solid;
+      width: $lsg--color-swatch-border-width;
+    }
     content: "";
     height: 100%;
     left: 0;
@@ -27,9 +36,10 @@
   }
 
   &:hover:before {
+    color: black;
     cursor: pointer;
-    color: black
   }
+
   &:after {
     cursor: pointer;
     display: block;
@@ -70,12 +80,15 @@
   }
 }
 
+// scss-lint:disable VendorPrefix
 .lsg--color-swatches {
   @extend %lsg--reset;
-  margin: $lsg--gap-width auto (-$lsg--gap-width);
+  margin: (4 * $lsg--gap-width) auto (-$lsg--gap-width);
   max-width: $lsg--width + 2 * $lsg--gap-width;
   overflow: hidden;
   padding-left: $lsg--gap-width;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 @for $i from 1 through 12 {
